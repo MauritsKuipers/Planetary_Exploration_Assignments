@@ -82,18 +82,6 @@ def graph_massflow_height():
     # Show Plot
     plt.show()
 
-def grain_accretion():
-    x_values = np.arange(0, 1000, 1)
-    m0 = 4.189*10**(-15) # kg
-    vth = velocity_height
-    dh = 1
-    dt = dh / vth
-
-    #test
-
-
-
-
 if __name__ == "__main__":
     graph_temp_height()
     graph_velocity_height()
