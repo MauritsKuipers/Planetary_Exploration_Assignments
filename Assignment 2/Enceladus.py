@@ -60,7 +60,7 @@ def graph_velocity_height():
 
 def massflow():
     Vth = velocity_height()
-    rho = 4.85  # kg/m3
+    rho = 4.85*10**(-3)  # kg/m3
 
     mass_flow = rho * Vth
 

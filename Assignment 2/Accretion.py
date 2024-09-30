@@ -32,13 +32,14 @@ def thermal_velocity(crevasse_length):
     return np.sqrt(8 * kb * temperatures / (np.pi * m_h2o))
 
 def calculate_icy_grain_mass(crevasse_length, T_top):
-    V_th = thermal_velocity(crevasse_length)
+    V_th = thermal_velocity(crevasse_length)    # Vth is working properly
 
     heights = np.arange(0, int(crevasse_length["Enceladus"]), dm)
     total_mass = np.zeros_like(heights)
     total_mass[0] = (4 * np.pi * rho_ice * r0**3) / (3)     # Initial Mass
-
+    print("Initial masses:", total_mass[0])
     sigma = np.pi * (r0)**2
+
     for i in range(0, len(heights)):
         if i > 0:
             dt = dm / V_th[i]
@@ -52,7 +53,8 @@ def calculate_icy_grain_mass(crevasse_length, T_top):
             sigma = np.pi * new_r**2
         if i == 0:
             None
-
+    print("Masses")
+    print(total_mass)
     return total_mass
 
 def graph_mass_height():
