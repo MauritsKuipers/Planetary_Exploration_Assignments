@@ -44,9 +44,9 @@ def calculate_icy_grain_mass(crevasse_length, T_top):
     for i in range(1, len(heights)):
         print("Sigma:", sigma)
         dt = dm / V_th[i]
-        mass_flow = rho_ice * V_th[i]
+        mass_flow = rho_ice * V_th[i]   # or 4.85*10**(-3) * V_th[i]
         print("Mass Flow:", mass_flow)
-        accretion = mass_flow * sigma * dt
+        accretion = mass_flow * 4 * sigma * dt
         print("Accretion:", accretion)
         total_mass.append(total_mass[i - 1] + accretion)  # Append the new total mass
         print("Previous Mass:", total_mass[i - 1])
