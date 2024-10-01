@@ -32,36 +32,34 @@ def thermal_velocity(crevasse_length):
     return np.sqrt(8 * kb * temperatures / (np.pi * m_h2o))
 
 def calculate_icy_grain_mass(crevasse_length, T_top):
-    V_th = thermal_velocity(crevasse_length)    # Vth is working properly
+    V_th = thermal_velocity(crevasse_length)  # Vth is working properly
 
     heights = np.arange(0, int(crevasse_length["Enceladus"]), dm)
-    total_mass = np.zeros_like(heights)
-    total_mass[0] = (4 * np.pi * rho_ice * r0**3) / (3)     # Initial Mass
-    print("Initial masses:", total_mass[0])
+    total_mass = []  # Use a list to store mass values
+    initial_mass_mg = ((4 * np.pi * rho_ice * r0**3) / (3))
+    total_mass.append(initial_mass_mg)  # Append initial mass
+    print("Initial mass:", total_mass[0])
     sigma = np.pi * (r0)**2
 
-    for i in range(0, len(heights)):
-        if i > 0:
-            print("Sigma: ",sigma)
-            dt = dm / V_th[i]
-            mass_flow = rho_ice * V_th[i]
-            print("Mass Flow: ",mass_flow)
-            accretion = mass_flow * sigma * dt
-            print("Accretion: ", accretion)
-            total_mass[i] = total_mass[i-1] + accretion
-            print("Previous Mass: ", total_mass[i-1])
-            print("Current Mass: ", total_mass[i])
-            new_r = ((3*total_mass[i])/(4 * np.pi * rho_ice))**(1/3)
+    for i in range(1, len(heights)):
+        print("Sigma:", sigma)
+        dt = dm / V_th[i]
+        mass_flow = rho_ice * V_th[i]
+        print("Mass Flow:", mass_flow)
+        accretion = mass_flow * sigma * dt
+        print("Accretion:", accretion)
+        total_mass.append(total_mass[i - 1] + accretion)  # Append the new total mass
+        print("Previous Mass:", total_mass[i - 1])
+        print("Current Mass:", total_mass[i])
+        new_r = ((3 * total_mass[i]) / (4 * np.pi * rho_ice))**(1/3)
 
-            sigma = np.pi * new_r**2
-        if i == 0:
-            None
-    # print("Masses")
-    # print(total_mass)
+        sigma = np.pi * new_r**2
+
     return total_mass
 
+
 def graph_mass_height():
-    total_mass = calculate_icy_grain_mass(crevasse_length, T_top)
+    total_mass = calculate_icy_grain_mass(crevasse_length, T_top)  #back to grams
     heights = np.arange(0, int(crevasse_length["Enceladus"]), dm)
 
     # Make the plot
