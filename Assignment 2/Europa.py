@@ -16,6 +16,7 @@ def temp_height_enceladus():
 
 def graph_temp_height():
     m, b = temp_height_enceladus()
+    print("Europa m: ", m, "Europa b: ", b)
     x_values = np.arange(0, 20000, 1)
     y_values = m * x_values + b
 

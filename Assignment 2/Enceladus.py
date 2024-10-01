@@ -16,6 +16,7 @@ def temp_height_enceladus():
 
 def graph_temp_height():
     m, b = temp_height_enceladus()
+    print("Enceladus m: ", m, "Enceladus b: ", b)
     x_values = np.arange(0, 1000, 1)
     y_values = m * x_values + b
 
