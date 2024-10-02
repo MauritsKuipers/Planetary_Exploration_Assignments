@@ -26,7 +26,7 @@ def graph_temp_height():
     # Label and Title
     plt.xlabel("Height, m")
     plt.ylabel("Temperature, K")
-    plt.title("Linear Relationship Between Temperature and Height")
+    plt.title("Europa Linear Relationship Between Temperature and Height")
 
     # Show Plot
     plt.show()
@@ -53,7 +53,7 @@ def graph_velocity_height():
     # Label and Title
     plt.xlabel("Height, m")
     plt.ylabel("Velocity, m/s")
-    plt.title("Relationship Between Velocity and Height")
+    plt.title("Europa Relationship Between Velocity and Height")
 
     # Show Plot
     plt.show()
@@ -78,7 +78,7 @@ def graph_massflow_height():
     # Label and Title
     plt.xlabel("Height, m")
     plt.ylabel("Mass Flow, kg/s")
-    plt.title("Relationship Between Mass Flow and Height")
+    plt.title("Europa Relationship Between Mass Flow and Height")
 
     # Show Plot
     plt.show()
